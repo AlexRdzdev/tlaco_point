@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
         )),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
-            backgroundColor: Apptheme.primaryColor,
+            backgroundColor: AppTheme.primaryColor,
             onPressed: () {
               print('hola mundo');
             }),
