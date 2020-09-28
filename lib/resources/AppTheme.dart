@@ -1,7 +1,6 @@
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
-class Apptheme {
+class AppTheme {
   static Color primaryColor = new Color(0xffb71c1c);
   static Color primaryLightColor = new Color(0xfff05545);
   static Color primaryDarkColor = new Color(0xff7f0000);
