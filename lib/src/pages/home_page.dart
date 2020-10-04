@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tlaco_point/resources/AppTheme.dart';
+import 'package:tlaco_point/resources/AppColors.dart';
 
 class HomePage extends StatelessWidget {
   final TextStyle estiloTexto = new TextStyle(fontSize: 30);
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
         )),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
-            backgroundColor: AppTheme.primaryColor,
+            backgroundColor: AppColors.primaryColor,
             onPressed: () {
               print('hola mundo');
             }),

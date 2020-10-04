@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tlaco_point/resources/AppTheme.dart';
 
 class AccessType extends StatelessWidget {
   @override
@@ -13,25 +12,15 @@ class AccessType extends StatelessWidget {
             SizedBox(height: 30),
             RaisedButton(
                 onPressed: () {},
-                child: Text('Acceder',
-                    style: TextStyle(
-                        fontSize: 20, color: AppTheme.secondaryDarkColor)),
-                splashColor: AppTheme.primaryColor),
+                child: Text('Acceder', style: TextStyle(fontSize: 20))),
             const SizedBox(height: 30),
             RaisedButton(
-              onPressed: () {},
-              child: Text('Crear cuenta ',
-                  style: TextStyle(
-                      fontSize: 20, color: AppTheme.secondaryDarkColor)),
-              splashColor: AppTheme.primaryColor,
-            ),
+                onPressed: () {},
+                child: Text('Crear cuenta ', style: TextStyle(fontSize: 20))),
             RaisedButton(
-              onPressed: () {},
-              child: Text('Registrar Puesto',
-                  style: TextStyle(
-                      fontSize: 20, color: AppTheme.secondaryDarkColor)),
-              splashColor: AppTheme.primaryColor,
-            ),
+                onPressed: () {},
+                child:
+                    Text('Registrar Puesto', style: TextStyle(fontSize: 20))),
           ]),
     ));
   }

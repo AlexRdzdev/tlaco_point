@@ -7,7 +7,6 @@ class SignUpStand extends StatefulWidget {
 class _SignUpStandState extends State<SignUpStand> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     throw UnimplementedError();
   }
 }
