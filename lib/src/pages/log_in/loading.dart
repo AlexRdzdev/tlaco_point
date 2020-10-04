@@ -8,7 +8,7 @@ class Loading extends StatelessWidget {
       body: Center(
         child: Center(child: Image.asset('assets/TlacoPoint.png')),
       ),
-      backgroundColor: AppTheme.secondaryColor,
+      //backgroundColor: AppTheme.secondaryColor,
     );
   }
 }
