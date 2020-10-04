@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tlaco_point/resources/AppTheme.dart';
 
-class Loginn extends StatelessWidget {
+class Loginn extends StatefulWidget {
+  _LoginnState createState() => _LoginnState();
+}
+
+class _LoginnState extends State<Loginn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Log In'),
-          backgroundColor: AppTheme.primaryDarkColor,
-        ),
+        appBar: AppBar(title: Text('Log In')),
         body: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: <Widget>[
@@ -17,12 +17,8 @@ class Loginn extends StatelessWidget {
               _password(),
               Divider(),
               RaisedButton(
-                onPressed: () {},
-                child: Text('Acceder ',
-                    style: TextStyle(
-                        fontSize: 20, color: AppTheme.secondaryDarkColor)),
-                splashColor: AppTheme.primaryColor,
-              )
+                  onPressed: () {},
+                  child: Text('Acceder ', style: TextStyle(fontSize: 20)))
             ]));
   }
 

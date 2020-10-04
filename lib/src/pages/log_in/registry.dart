@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tlaco_point/resources/AppTheme.dart';
 
-class User_Registry extends StatelessWidget {
+class UserRegistry extends StatefulWidget {
+  _UserRegistryState createState() => _UserRegistryState();
+}
+
+class _UserRegistryState extends State<UserRegistry> {
   final String _nombre = '';
   final String _apellido = '';
   final String _email = '';
@@ -10,10 +13,7 @@ class User_Registry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Registrarse'),
-          backgroundColor: AppTheme.primaryDarkColor,
-        ),
+        appBar: AppBar(title: Text('Registrarse')),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
           children: <Widget>[
@@ -28,12 +28,8 @@ class User_Registry extends StatelessWidget {
             //  _crearFecha(context),
             Divider(),
             RaisedButton(
-              onPressed: () {},
-              child: Text('Registrarse ',
-                  style: TextStyle(
-                      fontSize: 20, color: AppTheme.secondaryDarkColor)),
-              splashColor: AppTheme.primaryColor,
-            )
+                onPressed: () {},
+                child: Text('Registrarse ', style: TextStyle(fontSize: 20)))
           ],
         ));
   }
