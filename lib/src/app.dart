@@ -7,12 +7,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
     return MaterialApp(
-      home: Center(child: MainMenu()),
+      home: Center(child: Loading()),
       theme: ThemeData(
           primaryColor: AppTheme.primaryColor,
           primaryColorLight: AppTheme.primaryLightColor,
-          primaryColorDark: AppTheme.primaryDarkColor),
+          primaryColorDark: AppTheme.primaryDarkColor,
+          backgroundColor: AppTheme.white,
+          buttonTheme: ButtonThemeData(
+              buttonColor: AppTheme.primaryLightColor,
+              splashColor: AppTheme.primaryDarkColor)),
     );
-    return MaterialApp(home: Center(child: Loading()));
   }
 }
