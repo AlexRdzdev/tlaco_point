@@ -6,8 +6,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
     return MaterialApp(
-      home: Center(child: Loading()),
-      theme: AppTheme.getAppTheme(context),
-      routes: ,
+        home: Center(child: Loading()), theme: AppTheme.getAppTheme(context));
   }
 }

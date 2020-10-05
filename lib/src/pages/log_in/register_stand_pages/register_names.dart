@@ -8,7 +8,7 @@ class RegisterStandName extends StatefulWidget {
 class _RegisterStandNameState extends State<RegisterStandName> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(_NombrePuesto);
+    return Scaffold();
   }
 
   Widget _NombrePuesto() {

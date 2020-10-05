@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tlaco_point/src/pages/log_in/log_inn.dart';
 
 class AccessType extends StatelessWidget {
   @override
@@ -17,7 +18,11 @@ class AccessType extends StatelessWidget {
         ),
         const SizedBox(height: 30),
         RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              final route = MaterialPageRoute(builder: (context) => Loginn());
+
+              Navigator.push(context, route);
+            },
             child: Text(
               'Acceder',
               style: TextStyle(fontSize: 20),
