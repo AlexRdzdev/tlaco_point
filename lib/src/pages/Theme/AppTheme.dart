@@ -9,6 +9,8 @@ class AppTheme {
         primaryColorDark: AppColors.primaryDarkColor,
         backgroundColor: AppColors.white,
         buttonTheme: ButtonThemeData(
+            minWidth: 220.0,
+            height: 50.0,
             buttonColor: AppColors.primaryLightColor,
             splashColor: AppColors.primaryDarkColor,
             textTheme: ButtonTextTheme.primary,
