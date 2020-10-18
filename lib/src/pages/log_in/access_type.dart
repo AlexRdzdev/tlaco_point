@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tlaco_point/src/pages/log_in/log_inn.dart';
 
 class AccessType extends StatelessWidget {
   @override
@@ -13,31 +12,33 @@ class AccessType extends StatelessWidget {
             'assets/TlacoPoint.png',
             width: 300.0,
             height: 250.0,
-            alignment: Alignment.center,
+            alignment: Alignment.bottomCenter,
           ),
         ),
         const SizedBox(height: 30),
-        RaisedButton(
+        ElevatedButton(
             onPressed: () {
-              final route = MaterialPageRoute(builder: (context) => Loginn());
-
-              Navigator.push(context, route);
+              Navigator.pushNamed(context, 'Login');
             },
             child: Text(
               'Acceder',
               style: TextStyle(fontSize: 20),
             )),
         const SizedBox(height: 30),
-        RaisedButton(
-            onPressed: () {},
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'UserRegistry');
+            },
             child: Text('Crear cuenta ', style: TextStyle(fontSize: 20))),
         const SizedBox(height: 70),
         const Text.rich(TextSpan(
             text: 'Tienes un puesto? Registralo',
             style: TextStyle(fontWeight: FontWeight.bold))),
         const SizedBox(height: 20),
-        RaisedButton(
-            onPressed: () {},
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'StandRegister');
+            },
             child: Text('Registrar Puesto', style: TextStyle(fontSize: 20))),
       ]),
     ));
