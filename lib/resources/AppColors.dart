@@ -7,7 +7,6 @@ class AppColors {
   static final Color secondaryColor = new Color(0xff757575);
   static final Color secondaryLightColor = new Color(0xffa4a4a4);
   static final Color secondaryDarkColor = new Color(0xff494949);
-  static final Color primaryTextColor = new Color(0xff000000);
+  static final Color primaryTextColor = new Color(0xffffffff);
   static final Color secondaryTextColor = new Color(0xfffcfcfc);
-  static final Color white = new Color(0xffffffff);
 }
