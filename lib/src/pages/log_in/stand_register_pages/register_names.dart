@@ -8,28 +8,36 @@ class RegisterStandName extends StatefulWidget {
 class _RegisterStandNameState extends State<RegisterStandName> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Nombre'),
-      ),
-      floatingActionButton: ButtonBar(
-        children: <Widget>[
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Regresar ', style: TextStyle(fontSize: 20))),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'StandRegisterDirection');
-              },
-              child: Text('Siguiente ', style: TextStyle(fontSize: 20)))
-        ],
-      ),
+    return ListView(
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+        children: <Widget>[_nombrePuesto(), Divider(), _especialidadPuesto()]);
+  }
+
+  Widget _nombrePuesto() {
+    return TextField(
+      // autofocus: true,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Ejemplo: Tacos Alex',
+          labelText: 'Nombre del puesto',
+          helperText: '',
+          suffixIcon: Icon(Icons.storefront),
+          icon: Icon(Icons.store)),
     );
   }
 
-  Widget _NombrePuesto() {
-    return null;
+  Widget _especialidadPuesto() {
+    return TextField(
+      // autofocus: true,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Ejemplo: Tacos',
+          labelText: 'Especialidad',
+          helperText: '',
+          suffixIcon: Icon(Icons.local_dining),
+          icon: Icon(Icons.store)),
+    );
   }
 }

@@ -1,31 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong/latlong.dart';
+import 'package:tlaco_point/resources/AppColors.dart';
+import 'package:tlaco_point/src/pages/templates/Maps.dart';
 
 class RegisterStandDirection extends StatefulWidget {
   @override
-  _RegisterStandNameDirection createState() => _RegisterStandNameDirection();
+  _RegisterStandNameDirectionState createState() =>
+      _RegisterStandNameDirectionState();
 }
 
-class _RegisterStandNameDirection extends State<RegisterStandDirection> {
+class _RegisterStandNameDirectionState extends State<RegisterStandDirection> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Dirección'),
-      ),
-      floatingActionButton: ButtonBar(
-        children: <Widget>[
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Regresar ', style: TextStyle(fontSize: 20))),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'StandRegisterSchedule');
-              },
-              child: Text('Siguiente ', style: TextStyle(fontSize: 20)))
-        ],
-      ),
-    );
+    return Flex(direction: Axis.vertical, children: [
+      MapTemplate(
+        height: 550,
+        options: MarkerLayerOptions(
+          markers: [
+            Marker(
+              width: 80.0,
+              height: 80.0,
+              point: LatLng(31.660496, -106.421630),
+              builder: (ctx) => Container(
+                child: Icon(
+                  Icons.place,
+                  color: AppColors.primaryColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+      )
+    ]);
   }
 }
