@@ -15,6 +15,7 @@ class AppTheme {
         backgroundColor: Colors.white,
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all<Size>(Size(220, 50)),
           textStyle: MaterialStateProperty.resolveWith<TextStyle>(
               (Set<MaterialState> states) {
             if (states.any(interactiveStates.contains)) {
