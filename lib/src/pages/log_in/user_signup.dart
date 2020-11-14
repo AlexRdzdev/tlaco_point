@@ -27,7 +27,7 @@ class _UserRegistryState extends State<UserRegistry> {
             Divider(),
             //  _crearFecha(context),
             Divider(),
-            RaisedButton(
+            ElevatedButton(
                 onPressed: () {},
                 child: Text('Registrarse ', style: TextStyle(fontSize: 20)))
           ],
