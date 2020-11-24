@@ -8,9 +8,16 @@ class RegisterStandName extends StatefulWidget {
 class _RegisterStandNameState extends State<RegisterStandName> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Scaffold(
+      body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-        children: <Widget>[_nombrePuesto(), Divider(), _especialidadPuesto()]);
+        children: <Widget>[
+          _nombrePuesto(),
+          Divider(),
+          _especialidadPuesto(),
+        ],
+      ),
+    );
   }
 
   Widget _nombrePuesto() {

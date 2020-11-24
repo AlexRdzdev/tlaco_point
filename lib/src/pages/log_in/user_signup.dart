@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class UserRegistry extends StatefulWidget {
-  _UserRegistryState createState() => _UserRegistryState();
+class UserSignUp extends StatefulWidget {
+  _UserSignUpState createState() => _UserSignUpState();
 }
 
-class _UserRegistryState extends State<UserRegistry> {
-  final String _nombre = '';
-  final String _apellido = '';
-  final String _email = '';
+class _UserSignUpState extends State<UserSignUp> {
+  //final String _nombre = '';
+  //final String _apellido = '';
+  //final String _email = '';
   // String _password  = '';
 
   @override

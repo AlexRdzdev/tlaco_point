@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tlaco_point/src/pages/Theme/AppTheme.dart';
-import 'package:tlaco_point/src/routes/AppRoutes.dart';
+import 'package:tlaco_point/Theme/AppTheme.dart';
+import 'package:tlaco_point/routes/AppRoutes.dart';
 
 class MyApp extends StatelessWidget {
   @override

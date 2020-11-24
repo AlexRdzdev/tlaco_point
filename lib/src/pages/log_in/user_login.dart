@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Loginn extends StatefulWidget {
-  _LoginnState createState() => _LoginnState();
+class UserLogin extends StatefulWidget {
+  _UserLoginState createState() => _UserLoginState();
 }
 
-class _LoginnState extends State<Loginn> {
+class _UserLoginState extends State<UserLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +16,7 @@ class _LoginnState extends State<Loginn> {
               Divider(),
               _password(),
               Divider(),
+              SizedBox(height: 20),
               ElevatedButton(
                   onPressed: () {},
                   child: Text('Acceder ', style: TextStyle(fontSize: 20)))

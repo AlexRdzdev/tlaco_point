@@ -6,9 +6,9 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-        seconds: 3,
+        seconds: 1,
         navigateAfterSeconds: 'AccessType',
-        image: new Image.asset('assets/TlacoPoint.png'),
+        image: Image.asset('assets/TlacoPoint.png'),
         loadingText: Text("Loading"),
         photoSize: 100.0,
         loaderColor: AppColors.primaryDarkColor);

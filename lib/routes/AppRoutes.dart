@@ -9,8 +9,8 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
     'Loading': (BuildContext context) => Loading(),
     'AccessType': (BuildContext context) => AccessType(),
-    'Login': (BuildContext context) => Loginn(),
-    'UserRegistry': (BuildContext context) => UserRegistry(),
+    'Login': (BuildContext context) => UserLogin(),
+    'UserRegistry': (BuildContext context) => UserSignUp(),
     'StandRegister': (BuildContext context) => SignUpStand(),
   };
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:tlaco_point/resources/AppColors.dart';
-import 'package:tlaco_point/src/pages/templates/Maps.dart';
+import 'package:tlaco_point/widgets/Maps.dart';
 
 class RegisterStandDirection extends StatefulWidget {
   @override
