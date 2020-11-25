@@ -12,11 +12,12 @@ class DbConnectionProvider {
   static int port = 5432;
 
   Future<PostgreSQLConnection> get connection async {
-    if (!_connection.isClosed) return _connection;
-
-    _connection = await initConnection();
-
-    return _connection;
+    if (_connection == null || _connection.isClosed) {
+      _connection = await initConnection();
+      return _connection;
+    } else {
+      return _connection;
+    }
   }
 
   Future<PostgreSQLConnection> initConnection() async {
