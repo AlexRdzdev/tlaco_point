@@ -7,7 +7,7 @@ class Loading extends StatelessWidget {
   Widget build(BuildContext context) {
     return SplashScreen(
         seconds: 1,
-        navigateAfterSeconds: 'AccessType',
+        navigateAfterSeconds: 'LogIn',
         image: Image.asset('assets/TlacoPoint.png'),
         loadingText: Text("Loading"),
         photoSize: 100.0,

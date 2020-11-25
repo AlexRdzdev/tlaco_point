@@ -6,6 +6,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
     return MaterialApp(
+      title: 'TlacoPoint',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.getAppTheme(context),
       initialRoute: 'Loading',
       routes: getApplicationRoutes(),
