@@ -1,7 +1,6 @@
 import 'package:postgres/postgres.dart';
-import 'package:provider/provider.dart';
 
-class DbConnectionProvider extends Provider {
+class DbConnectionProvider {
   static PostgreSQLConnection _connection;
   static final DbConnectionProvider postgreSql = DbConnectionProvider._();
   DbConnectionProvider._();
