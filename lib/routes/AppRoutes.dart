@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tlaco_point/src/pages/home_page.dart';
 import 'package:tlaco_point/src/pages/log_in/login.dart';
 import 'package:tlaco_point/src/pages/loading.dart';
 import 'package:tlaco_point/src/pages/stand_register_pages/stand_register.dart';
@@ -10,5 +11,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'LogIn': (BuildContext context) => LogIn(),
     'SignUp': (BuildContext context) => SignUp(),
     'StandRegister': (BuildContext context) => SignUpStand(),
+    'Home': (BuildContext context) => HomePage(),
   };
 }

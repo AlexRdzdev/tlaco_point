@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MainMenu extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _MainMenuState createState() => _MainMenuState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MainMenuState extends State<MainMenu> {
+class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);

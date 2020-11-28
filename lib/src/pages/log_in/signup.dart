@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:postgres/postgres.dart';
-import 'package:tlaco_point/providers/dbConnection_provider.dart';
+import 'package:tlaco_point/services/signUpService.dart';
 
 class SignUp extends StatefulWidget {
   _SignUpState createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController _nombreController;
+  TextEditingController _apellidoController;
+  TextEditingController _emailController;
+  TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _nombreController = new TextEditingController();
+    _apellidoController = new TextEditingController();
+    _emailController = new TextEditingController();
+    _passwordController = new TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -80,6 +94,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _inputNombre() {
     return TextField(
+      controller: _nombreController,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -92,6 +107,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _inputApellido() {
     return TextField(
+      controller: _apellidoController,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -104,6 +120,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _inputEmail() {
     return TextField(
+      controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -115,6 +132,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _inputPassword() {
     return TextField(
+      controller: _passwordController,
       obscureText: true, //oculta el texto
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -131,10 +149,13 @@ class _SignUpState extends State<SignUp> {
         padding: EdgeInsets.only(top: 25.00),
         child: ElevatedButton(
           style: ButtonStyle(),
-          onPressed: () async {
-            PostgreSQLConnection connection =
-                await DbConnectionProvider.postgreSql.connection;
-            connection.query('SELECT * FROM TP_USUARIOS');
+          onPressed: () {
+            setState(() {});
+            SignUpService.registrar(
+                pNOMBRE: _nombreController.text,
+                pAPELLIDO_1: _apellidoController.text,
+                pEMAIL: _emailController.text,
+                pPASSWORD: _passwordController.text);
           },
           child: Text(
             'Crear cuenta',

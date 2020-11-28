@@ -5,11 +5,11 @@ class DbConnectionProvider {
   static final DbConnectionProvider postgreSql = DbConnectionProvider._();
   DbConnectionProvider._();
 
-  static String host = 'tlacopoint.asuscomm.com',
-      user = 'SERROD',
-      password = 'mexico01',
-      db = 'tlacotest';
-  static int port = 5432;
+  static String _host = 'tlacopoint.asuscomm.com',
+      _user = 'SERROD',
+      _password = 'mexico01',
+      _db = 'tlacotest';
+  static int _port = 5432;
 
   Future<PostgreSQLConnection> get connection async {
     if (_connection == null || _connection.isClosed) {
@@ -21,8 +21,8 @@ class DbConnectionProvider {
   }
 
   Future<PostgreSQLConnection> initConnection() async {
-    PostgreSQLConnection connection = PostgreSQLConnection(host, port, db,
-        username: user, password: password);
+    PostgreSQLConnection connection = PostgreSQLConnection(_host, _port, _db,
+        username: _user, password: _password);
     await connection.open();
     return connection;
   }
