@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:postgres/postgres.dart';
+import 'package:tlaco_point/providers/dbConnection_provider.dart';
 
 class SignUp extends StatefulWidget {
   _SignUpState createState() => _SignUpState();
@@ -7,6 +9,8 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(
@@ -16,7 +20,6 @@ class _SignUpState extends State<SignUp> {
           _textoSuperior(),
           _inputs(),
           _boton(),
-          SizedBox(height: 20.0),
         ],
       ),
       bottomNavigationBar: _footer(context),
@@ -128,7 +131,11 @@ class _SignUpState extends State<SignUp> {
         padding: EdgeInsets.only(top: 25.00),
         child: ElevatedButton(
           style: ButtonStyle(),
-          onPressed: () {},
+          onPressed: () async {
+            PostgreSQLConnection connection =
+                await DbConnectionProvider.postgreSql.connection;
+            connection.query('SELECT * FROM TP_USUARIOS');
+          },
           child: Text(
             'Crear cuenta',
             style: TextStyle(fontSize: 20),
@@ -140,7 +147,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _footer(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 50),
+      padding: EdgeInsets.only(bottom: 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -154,3 +161,5 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
+_registrarUsuario() async {}

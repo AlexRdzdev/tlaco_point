@@ -4,18 +4,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class LogIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           children: <Widget>[
-            _logo(),
-            SizedBox(height: 30),
-            _inputs(),
+            _logo(size),
+            SizedBox(height: size.height * .05),
+            _inputs(size),
             _botonAcceder(context),
-            SizedBox(height: 20),
-            _opciones(),
-            Expanded(child: SizedBox()),
+            SizedBox(height: size.height * .025),
+            _opciones(size),
           ],
         ),
       ),
@@ -24,34 +25,34 @@ class LogIn extends StatelessWidget {
   }
 }
 
-Widget _logo() {
+Widget _logo(Size size) {
   return Container(
     padding: EdgeInsets.all(5.0),
     child: Image.asset(
       'assets/TlacoPoint.png',
       width: 300.0,
-      height: 250.0,
+      height: size.height * 0.30,
       alignment: Alignment.bottomCenter,
     ),
   );
 }
 
-Widget _inputs() {
+Widget _inputs(Size size) {
   return Container(
     child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: size.height * .025),
       child: Column(
         children: [
-          _inputEmail(),
-          SizedBox(height: 20),
-          _inputPassword(),
+          _inputEmail(size),
+          SizedBox(height: size.height * .025),
+          _inputPassword(size),
         ],
       ),
     ),
   );
 }
 
-Widget _inputEmail() {
+Widget _inputEmail(Size size) {
   return TextField(
     keyboardType: TextInputType.emailAddress,
     decoration: InputDecoration(
@@ -62,7 +63,7 @@ Widget _inputEmail() {
   );
 }
 
-Widget _inputPassword() {
+Widget _inputPassword(Size size) {
   return TextField(
     obscureText: true, //oculta el texto
     decoration: InputDecoration(
@@ -88,26 +89,28 @@ Widget _botonAcceder(BuildContext context) {
   );
 }
 
-Widget _opciones() {
+Widget _opciones(Size size) {
   return Column(
     children: [
       Text(
         '- O accede usando -',
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
-      SizedBox(height: 10),
+      SizedBox(height: size.height * .025),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _botonOpcion(
-            width: 180,
+            height: size.height * .07,
+            width: size.width * .45,
             label: Text('Facebook'),
             icon: FaIcon(FontAwesomeIcons.facebook),
             backgroundColor: Color.fromRGBO(66, 103, 178, 1),
             onPressed: () {},
           ),
           _botonOpcion(
-            width: 180,
+            height: size.height * .07,
+            width: size.width * .45,
             label: Text('Google'),
             icon: FaIcon(FontAwesomeIcons.google),
             backgroundColor: Color.fromRGBO(219, 68, 55, 1),
@@ -141,7 +144,7 @@ Widget _botonOpcion(
 
 Widget _footer(BuildContext context) {
   return Container(
-    padding: EdgeInsets.only(bottom: 50),
+    padding: EdgeInsets.only(bottom: 40),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
