@@ -6,6 +6,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  Size size;
   TextEditingController _nombreController;
   TextEditingController _apellidoController;
   TextEditingController _emailController;
@@ -22,19 +23,30 @@ class _SignUpState extends State<SignUp> {
   }
 
   @override
+  void dispose() {
+    _nombreController.dispose();
+    _apellidoController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    size = MediaQuery.of(context).size;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Column(
-        children: <Widget>[
-          SizedBox(height: 50.0),
-          _botonBack(),
-          _textoSuperior(),
-          _inputs(),
-          _boton(),
-        ],
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: size.height * .10),
+            _botonBack(),
+            _textoSuperior(),
+            _inputs(),
+            _boton(context),
+          ],
+        ),
       ),
       bottomNavigationBar: _footer(context),
     );
@@ -43,7 +55,7 @@ class _SignUpState extends State<SignUp> {
   Widget _botonBack() {
     return Row(
       children: [
-        SizedBox(width: 20.0),
+        SizedBox(width: size.width * .05),
         BackButton(onPressed: () {
           if (ModalRoute.of(context).canPop) Navigator.pop(context);
         }),
@@ -53,7 +65,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _textoSuperior() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: size.height * .01),
       child: Center(
         child: Column(
           children: [
@@ -76,15 +88,15 @@ class _SignUpState extends State<SignUp> {
   Widget _inputs() {
     return Container(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: EdgeInsets.symmetric(horizontal: size.height * .025),
         child: Column(
           children: [
             _inputNombre(),
-            SizedBox(height: 10),
+            SizedBox(height: size.height * .02),
             _inputApellido(),
-            SizedBox(height: 10),
+            SizedBox(height: size.height * .02),
             _inputEmail(),
-            SizedBox(height: 20),
+            SizedBox(height: size.height * .02),
             _inputPassword(),
           ],
         ),
@@ -142,20 +154,39 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _boton() {
+  Widget _boton(BuildContext context) {
     return Hero(
       tag: 'signup',
       child: Container(
-        padding: EdgeInsets.only(top: 25.00),
+        padding: EdgeInsets.only(top: size.height * .05),
         child: ElevatedButton(
           style: ButtonStyle(),
-          onPressed: () {
-            setState(() {});
-            SignUpService.registrar(
+          onPressed: () async {
+            bool registrado = await _registrarUsuario(
                 pNOMBRE: _nombreController.text,
                 pAPELLIDO_1: _apellidoController.text,
                 pEMAIL: _emailController.text,
                 pPASSWORD: _passwordController.text);
+            if (registrado) {
+              await showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: Text('Registrado con exito'),
+                  );
+                },
+              );
+              Navigator.pushReplacementNamed(context, 'Home');
+            } else {
+              return showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: Text('El correo ya esta registrado'),
+                  );
+                },
+              );
+            }
           },
           child: Text(
             'Crear cuenta',
@@ -183,4 +214,16 @@ class _SignUpState extends State<SignUp> {
   }
 }
 
-_registrarUsuario() async {}
+_registrarUsuario(
+    {String pNOMBRE,
+    String pAPELLIDO_1,
+    String pEMAIL,
+    String pPASSWORD}) async {
+  print('parametro: $pEMAIL');
+  bool registrado = await SignUpService.registrar(
+      pNOMBRE: pNOMBRE,
+      pAPELLIDO_1: pAPELLIDO_1,
+      pEMAIL: pEMAIL,
+      pPASSWORD: pPASSWORD);
+  return registrado;
+}
