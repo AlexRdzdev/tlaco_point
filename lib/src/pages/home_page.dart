@@ -1,50 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tlaco_point/providers/ui_provider.dart';
 import 'package:tlaco_point/widgets/botton_navigationb.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+import 'Preferences_user/customer_options.dart';
+import 'Preferences_user/search_page.dart';
+import 'Preferences_user/start_page.dart';
 
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
+//lass HomePage extends StatefulWidget {
+//@override
+//_HomePageState createState() => _HomePageState();
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+//}
 
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('BottomNavigationBar Sample'),
+          elevation: 0,
+          title: Text('Historial'),
+          actions: [
+            IconButton(icon: Icon(Icons.delete_forever), onPressed: () {})
+          ],
         ),
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
-        bottomNavigationBar: BottonNavigationb()
-        //currentIndex: _selectedIndex,
-        //selectedItemColor: Colors.amber[800],
-        // onTap: _onItemTapped,
+        body: _HomePageBody(),
+        bottomNavigationBar: BottonNavigationb());
+  }
+}
 
-        );
+class _HomePageBody extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
+
+    final currentIndex = uiProvider.selectMenuOpt;
+
+    switch (currentIndex) {
+      case 0:
+        return StartFirstPage();
+      case 1:
+        return SearchSecondPage();
+      case 2:
+        return CustomerThirdPage();
+      default:
+        return StartFirstPage();
+    }
   }
 }
