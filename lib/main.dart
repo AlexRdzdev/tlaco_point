@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
-//Nosotros escribimos
 import 'src/app.dart';
 
-void main() {
+import 'package:tlaco_point/preferences/user_preferences.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = new PreferenciasUsuario();
+  await prefs.initPrefs();
   runApp(MyApp());
 }
