@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tlaco_point/services/signUpService.dart';
+import 'package:tlaco_point/services/user/signUpService.dart';
+import 'package:tlaco_point/src/pages/home_pages/home_page.dart';
+import 'package:tlaco_point/src/pages/log_in/login.dart';
+import 'package:tlaco_point/utils/utils.dart';
 
 class SignUp extends StatefulWidget {
+  static const String routeName = 'SignUp';
   _SignUpState createState() => _SignUpState();
 }
 
@@ -48,7 +52,7 @@ class _SignUpState extends State<SignUp> {
           ],
         ),
       ),
-      bottomNavigationBar: _footer(context),
+      bottomNavigationBar: _footer(),
     );
   }
 
@@ -57,7 +61,7 @@ class _SignUpState extends State<SignUp> {
       children: [
         SizedBox(width: size.width * .05),
         BackButton(onPressed: () {
-          if (ModalRoute.of(context).canPop) Navigator.pop(context);
+          Navigator.pushReplacementNamed(context, LogIn.routeName);
         }),
       ],
     );
@@ -168,24 +172,12 @@ class _SignUpState extends State<SignUp> {
                 pEMAIL: _emailController.text,
                 pPASSWORD: _passwordController.text);
             if (registrado) {
-              await showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    content: Text('Registrado con exito'),
-                  );
-                },
-              );
-              Navigator.pushReplacementNamed(context, 'Home');
+              Navigator.pushReplacementNamed(context, HomePage.routeName);
             } else {
-              return showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    content: Text('El correo ya esta registrado'),
-                  );
-                },
-              );
+              mostrarDialog(
+                  context: context,
+                  title: 'ERROR',
+                  content: 'El correo ya está registrado');
             }
           },
           child: Text(
@@ -197,7 +189,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _footer(BuildContext context) {
+  Widget _footer() {
     return Container(
       padding: EdgeInsets.only(bottom: 40),
       child: Row(
@@ -205,7 +197,8 @@ class _SignUpState extends State<SignUp> {
         children: [
           Text('Ya tienes una cuenta?'),
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () =>
+                Navigator.pushReplacementNamed(context, LogIn.routeName),
             child: Text('Inicia Sesión'),
           ),
         ],

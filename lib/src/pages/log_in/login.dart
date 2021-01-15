@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tlaco_point/services/LogInAccount.dart';
+
+import 'package:tlaco_point/services/user/logInService.dart';
+
+import 'package:tlaco_point/src/pages/home_pages/home_page.dart';
+import 'package:tlaco_point/src/pages/log_in/signup.dart';
+
+import 'package:tlaco_point/utils/utils.dart';
 
 class LogIn extends StatefulWidget {
+  static const String routeName = 'LogIn';
   _Entrar createState() => _Entrar();
 }
 
@@ -31,7 +38,7 @@ class _Entrar extends State<LogIn> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             _logo(size),
@@ -100,7 +107,7 @@ class _Entrar extends State<LogIn> {
 
   Widget _botonAcceder(BuildContext context) {
     return Hero(
-      tag: 'signup',
+      tag: SignUp.routeName,
       child: Container(
         padding: EdgeInsets.only(top: 20),
         child: ElevatedButton(
@@ -109,16 +116,12 @@ class _Entrar extends State<LogIn> {
                 vEmail: _emailController.text,
                 vPassword: _controllerPassword.text);
             if (comprobar) {
-              Navigator.pushReplacementNamed(context, 'Home');
+              Navigator.pushReplacementNamed(context, HomePage.routeName);
             } else {
-              return showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    content: Text('El correo y/o la contraseña es erronea'),
-                  );
-                },
-              );
+              mostrarDialog(
+                  context: context,
+                  title: 'ERROR',
+                  content: 'Correo/contraseña invalidos');
             }
           },
           child: Text('Acceder', style: TextStyle(fontSize: 20)),
@@ -188,7 +191,8 @@ class _Entrar extends State<LogIn> {
         children: [
           Text('No tienes una cuenta?'),
           TextButton(
-            onPressed: () => Navigator.pushNamed(context, 'SignUp'),
+            onPressed: () =>
+                Navigator.pushReplacementNamed(context, SignUp.routeName),
             child: Text('Registrate'),
           ),
         ],
@@ -202,6 +206,6 @@ _verificarUsuario({
   String vPassword,
 }) async {
   bool verificado =
-      await LogInAccount.vericar(vEmail: vEmail, vPassword: vPassword);
+      await LogInService.verificar(vEmail: vEmail, vPassword: vPassword);
   return verificado;
 }

@@ -1,8 +1,12 @@
 import 'package:postgres/postgres.dart';
 import 'package:tlaco_point/models/user.dart';
+import 'package:tlaco_point/preferences/user_preferences.dart';
 import 'package:tlaco_point/providers/dbConnection_provider.dart';
+import 'package:tlaco_point/src/pages/home_pages/home_page.dart';
 
 class SignUpService {
+  static final _prefs = PreferenciasUsuario();
+
   static Future<User> buscarUsuarioPorEmail(String pEMAIL) async {
     PostgreSQLConnection connection =
         await DbConnectionProvider.postgreSql.connection;
@@ -43,6 +47,10 @@ class SignUpService {
             });
       }, commitTimeoutInSeconds: 9999);
       print('usuario registrado con exito');
+      _prefs.email = pEMAIL;
+      _prefs.ultimaPagina = HomePage.routeName;
+      _prefs.nombre = pNOMBRE;
+      _prefs.apellido = pAPELLIDO_1;
       return true;
     } else {
       print(

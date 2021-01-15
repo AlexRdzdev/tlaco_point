@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tlaco_point/providers/ui_provider.dart';
-import 'package:tlaco_point/widgets/botton_navigationb.dart';
 
-import 'Preferences_user/customer_options.dart';
-import 'Preferences_user/search_page.dart';
-import 'Preferences_user/start_page.dart';
+import 'package:tlaco_point/src/pages/home_pages/start_page.dart';
+import 'package:tlaco_point/src/pages/home_pages/search_page.dart';
+import 'package:tlaco_point/src/pages/home_pages/customer_options.dart';
+
+import 'package:tlaco_point/widgets/botton_navigationb.dart';
 
 //lass HomePage extends StatefulWidget {
 //@override
@@ -14,18 +15,10 @@ import 'Preferences_user/start_page.dart';
 //}
 
 class HomePage extends StatelessWidget {
+  static const String routeName = 'Home';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: Text('Historial'),
-          actions: [
-            IconButton(icon: Icon(Icons.delete_forever), onPressed: () {})
-          ],
-        ),
-        body: _HomePageBody(),
-        bottomNavigationBar: BottonNavigationb());
+    return Scaffold(body: _HomePageBody(), bottomNavigationBar: BottomNavBar());
   }
 }
 

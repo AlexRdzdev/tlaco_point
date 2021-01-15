@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:tlaco_point/providers/ui_provider.dart';
 
-class BottonNavigationb extends StatelessWidget {
+class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
