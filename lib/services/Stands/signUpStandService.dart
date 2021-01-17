@@ -1,10 +1,10 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:postgres/postgres.dart';
-import 'package:tlaco_point/preferences/user_preferences.dart';
+//import 'package:tlaco_point/preferences/user_preferences.dart';
 import 'package:tlaco_point/providers/dbConnection_provider.dart';
 
 class SignUpStandService {
-  static final _prefs = PreferenciasUsuario();
+  //static final _prefs = PreferenciasUsuario();
 
   static Future<String> registrar({
     String pCORREO,
@@ -18,12 +18,14 @@ class SignUpStandService {
     double pLAT = pLATLNG.latitude;
     double pLNG = pLATLNG.longitude;
 
+    /** se comenta porque por el momento no se usaran la limitacion de 1 puesto por usuario
     List<
         Map<String,
             Map<String, dynamic>>> result = await connection.mappedResultsQuery(
         "SELECT * FROM TP_USUARIOS WHERE EMAIL = @pEMAIL AND ES_DUENO = FALSE",
         substitutionValues: {"pEMAIL": pCORREO.trim()});
-    //if (result.isEmpty) return "Ya tienes un puesto registrado";
+    if (result.isEmpty) return "Ya tienes un puesto registrado";
+    */
 
     await connection.transaction((connection) async {
       await connection.query(
