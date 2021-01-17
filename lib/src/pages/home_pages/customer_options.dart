@@ -33,10 +33,7 @@ class _CustomerThirdPageState extends State<CustomerThirdPage> {
         children: <Widget>[
           ListTile(
               leading: Icon(Icons.account_box), title: Text("Edita tu cuenta")),
-          ListTile(
-              leading: Icon(Icons.add_business),
-              title: Text("Registra tu puesto"),
-              onTap: () => Navigator.pushNamed(context, SignUpStand.routeName)),
+          _listOption(),
         ],
       ),
       floatingActionButton: FlatButton.icon(
@@ -50,5 +47,16 @@ class _CustomerThirdPageState extends State<CustomerThirdPage> {
   void cerrarSesion(BuildContext context) async {
     await LogOutService.cerrarSesion();
     Navigator.of(context).pushReplacementNamed(_prefs.ultimaPagina);
+  }
+
+  _listOption() {
+    if (_prefs.esDueno) {
+      return ListTile(
+          leading: Icon(Icons.storefront), title: Text(_prefs.nombrePuesto));
+    }
+    return ListTile(
+        leading: Icon(Icons.add_business),
+        title: Text("Registra tu puesto"),
+        onTap: () => Navigator.pushNamed(context, SignUpStand.routeName));
   }
 }

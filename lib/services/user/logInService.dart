@@ -60,7 +60,8 @@ class LogInService {
         return false;
       } else {
         print('usuario encontrado');
-        _prefs.email = vEmail;
+        _prefs.email = coincidencia.email;
+        _prefs.esDueno = coincidencia.esDueno;
         _prefs.nombre = coincidencia.nombre;
         _prefs.apellido = coincidencia.apellido1;
         _prefs.ultimaPagina = HomePage.routeName;

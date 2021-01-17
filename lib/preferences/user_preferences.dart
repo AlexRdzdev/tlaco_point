@@ -43,6 +43,24 @@ class PreferenciasUsuario {
     _prefs.setString('apellido', value);
   }
 
+// GET y SET del nombre del puesto
+  get nombrePuesto {
+    return _prefs.getString('nombrePuesto') ?? '';
+  }
+
+  set nombrePuesto(String value) {
+    _prefs.setString('nombrePuesto', value);
+  }
+
+  // GET y SET del es_dueno
+  get esDueno {
+    return _prefs.getBool('esDueno') ?? false;
+  }
+
+  set esDueno(bool value) {
+    _prefs.setBool('esDueno', value);
+  }
+
   // GET y SET de la última página
   get ultimaPagina {
     return _prefs.getString('ultimaPagina') ?? 'LogIn';

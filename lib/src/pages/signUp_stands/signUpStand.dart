@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tlaco_point/blocs/signUp_Stands/signUp_Stand_Bloc.dart';
+import 'package:tlaco_point/preferences/user_preferences.dart';
 import 'package:tlaco_point/resources/AppColors.dart';
+import 'package:tlaco_point/services/Stands/signUpStandService.dart';
+import 'package:tlaco_point/utils/utils.dart';
 
 class SignUpStand extends StatefulWidget {
   static const String routeName = 'signUpStand';
@@ -18,6 +21,7 @@ class _SignUpStandState extends State<SignUpStand> {
   Completer<GoogleMapController> _controller = Completer();
   Set<Marker> markers = new Set<Marker>();
 
+  static final _prefs = PreferenciasUsuario();
   SignUpStandBloc _bloc;
 
   static final CameraPosition initialPosition = CameraPosition(
@@ -46,7 +50,7 @@ class _SignUpStandState extends State<SignUpStand> {
         title: Text('Registra tu puesto aquí'),
         actions: [
           IconButton(
-              icon: Icon(Icons.location_searching),
+              icon: Icon(Icons.gps_fixed),
               onPressed: () async {
                 final GoogleMapController controller = await _controller.future;
                 controller.animateCamera(
@@ -71,9 +75,8 @@ class _SignUpStandState extends State<SignUpStand> {
             return FlatButton.icon(
                 onPressed: snapshot.hasData
                     ? () {
-                        print(_bloc.nombre);
-                        print(_bloc.especialidad);
-                        print(_bloc.latLng);
+                        _validarRegistro(_prefs.email, _bloc.nombre,
+                            _bloc.especialidad, _bloc.latLng);
                       }
                     : null,
                 color: AppColors.primaryLightColor,
@@ -186,5 +189,34 @@ class _SignUpStandState extends State<SignUpStand> {
     });
 
     bloc.changelatLng = newLatLng;
+  }
+
+  _validarRegistro(
+      email, String nombre, String especialidad, LatLng latLng) async {
+    String mensaje = await SignUpStandService.registrar(
+        pCORREO: _prefs.email,
+        pNOMBRE: _bloc.nombre,
+        pESPECIALIDAD: _bloc.especialidad,
+        pLATLNG: _bloc.latLng);
+
+    if (mensaje == "Puesto Registrado exitosamente") {
+      await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("EXITO"),
+              content: Text(mensaje),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            );
+          });
+      Navigator.pop(context);
+    } else {
+      mostrarDialog(context: context, title: 'ERROR', content: mensaje);
+    }
   }
 }
