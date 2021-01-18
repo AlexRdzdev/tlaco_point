@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tlaco_point/src/pages/list_restaurants/list_sucursales.dart';
+import 'package:tlaco_point/src/pages/detail_Stand/Detail_Stand.dart';
 import 'package:tlaco_point/src/pages/loading.dart';
 import 'package:tlaco_point/src/pages/log_in/login.dart';
 import 'package:tlaco_point/src/pages/log_in/signup.dart';
@@ -14,5 +15,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     HomePage.routeName: (BuildContext context) => HomePage(),
     SignUpStand.routeName: (BuildContext context) => SignUpStand(),
     // List_Sucursales.routeName: (BuildContext context) => List_Sucursales(),
+    DetailStand.routeName: (BuildContext context) => DetailStand(),
   };
 }
