@@ -36,12 +36,12 @@ class Puesto {
   factory Puesto.fromJson(Map<String, dynamic> json) => Puesto(
         tpFranquicia: TpFranquicia.fromJson(json["tp_franquicia"]),
         tpSucursal: TpSucursal.fromJson(json["tp_sucursal"]),
-        latLng: LatLng.fromJson(json["null"]),
+        latLng: LatLng(json[null]["latitud"], json[null]["longitud"]),
       );
 
   Map<String, dynamic> toJson() => {
         "tp_franquicia": tpFranquicia.toJson(),
         "tp_sucursal": tpSucursal.toJson(),
-        "latLng": latLng.toJson(),
+        null: latLng.toJson(),
       };
 }
