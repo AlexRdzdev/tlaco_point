@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tlaco_point/models/puesto.dart';
 import 'package:tlaco_point/services/Stands/searchStandService.dart';
+import 'package:tlaco_point/src/pages/detail_Stand/Detail_Stand.dart';
 
 class StandSearch extends SearchDelegate {
   StandSearch({
@@ -57,12 +58,16 @@ class StandSearch extends SearchDelegate {
                 leading: Icon(Icons.store),
                 title: Text(puesto.tpFranquicia.nombreFranquicia),
                 subtitle: Text(puesto.tpFranquicia.especialidad),
-                onTap: () {},
+                onTap: () {
+                  print(puesto.latLng);
+                  Navigator.pushNamed(context, DetailStand.routeName,
+                      arguments: puesto);
+                },
               );
             }).toList(),
           );
         } else {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }
       },
     );

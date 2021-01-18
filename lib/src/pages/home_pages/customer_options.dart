@@ -31,8 +31,8 @@ class _CustomerThirdPageState extends State<CustomerThirdPage> {
           title: Text('$_nombre $_apellido')),
       body: ListView(
         children: <Widget>[
-          ListTile(
-              leading: Icon(Icons.account_box), title: Text("Edita tu cuenta")),
+          // ListTile(
+          //     leading: Icon(Icons.account_box), title: Text("Edita tu cuenta")),
           _listOption(),
         ],
       ),
