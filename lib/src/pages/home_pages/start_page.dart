@@ -1,11 +1,13 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:tlaco_point/src/pages/list_restaurants/list_sucursales.dart';
 import 'dart:ui';
 
-import 'package:tlaco_point/src/pages/log_in/login.dart';
+class StartFirstPage extends StatefulWidget {
+  static const String routeName = 'StartFirstPage';
+  _Sucursales createState() => _Sucursales();
+}
 
-class StartFirstPage extends StatelessWidget {
+class _Sucursales extends State<StartFirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +56,10 @@ class StartFirstPage extends StatelessWidget {
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
       child: ElevatedButton(
-        onPressed: () =>
-            Navigator.pushReplacementNamed(context, LogIn.routeName),
+        onPressed: () {
+          Navigator.pushNamed(context, ListSucursales.routeName,
+              arguments: texto);
+        },
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

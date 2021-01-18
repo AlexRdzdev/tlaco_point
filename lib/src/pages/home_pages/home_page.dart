@@ -8,12 +8,6 @@ import 'package:tlaco_point/src/pages/home_pages/customer_options.dart';
 
 import 'package:tlaco_point/widgets/botton_navigationb.dart';
 
-//lass HomePage extends StatefulWidget {
-//@override
-//_HomePageState createState() => _HomePageState();
-
-//}
-
 class HomePage extends StatelessWidget {
   static const String routeName = 'Home';
   @override
