@@ -43,7 +43,7 @@ class _Sucursales extends State<StartFirstPage> {
           _crearBotonRedondeado(
               Image.asset("assets/tacos.png"), 'Tacos', context),
           _crearBotonRedondeado(
-              Image.asset("assets/boneless.png"), 'Sushi', context),
+              Image.asset("assets/boneless.png"), 'Boneless', context),
         ]),
       ],
     );

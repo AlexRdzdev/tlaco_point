@@ -3,17 +3,17 @@ import 'package:tlaco_point/models/puesto.dart';
 import 'package:tlaco_point/services/Locales/searchPuestos.dart';
 import 'package:tlaco_point/src/pages/detail_Stand/detail_Stand.dart';
 
-class ListSucursales extends StatefulWidget {
-  static const String routeName = 'List_Sucursales';
-  _ListSucursales createState() => _ListSucursales();
+class ListSucursalesUsers extends StatefulWidget {
+  static const String routeName = 'ListSucursalesUsers';
+  _ListSucursalesUsers createState() => _ListSucursalesUsers();
 }
 
-class _ListSucursales extends State<ListSucursales> {
+class _ListSucursalesUsers extends State<ListSucursalesUsers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Puestos Relacionados'),
+        title: Text('Tus Puestos'),
       ),
       body: Container(
         child: listaSucursales(context),
