@@ -59,9 +59,15 @@ class StandSearch extends SearchDelegate {
                 title: Text(puesto.tpFranquicia.nombreFranquicia),
                 subtitle: Text(puesto.tpFranquicia.especialidad),
                 onTap: () {
-                  print(puesto.latLng);
-                  Navigator.pushNamed(context, DetailStand.routeName,
-                      arguments: puesto);
+                  //print(puesto.latLng);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailStand(
+                        puesto: puesto,
+                      ),
+                    ),
+                  );
                 },
               );
             }).toList(),

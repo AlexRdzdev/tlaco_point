@@ -48,9 +48,14 @@ class _ListSucursales extends State<ListSucursales> {
         title: Text(opt.tpFranquicia.nombreFranquicia),
         leading: Icon(Icons.store),
         subtitle: Text(opt.tpFranquicia.especialidad),
-        onTap: () {
-          Navigator.pushNamed(context, DetailStand.routeName, arguments: opt);
-        },
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailStand(
+              puesto: opt,
+            ),
+          ),
+        ),
       );
 
       opciones..add(widgetTemp)..add(Divider());

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tlaco_point/models/puesto.dart';
-import 'package:tlaco_point/services/Locales/searchPuestos.dart';
-import 'package:tlaco_point/src/pages/detail_Stand/detail_Stand.dart';
+import 'package:tlaco_point/preferences/user_preferences.dart';
+import 'package:tlaco_point/services/Stands/getUserStandsService.dart';
+import 'package:tlaco_point/src/pages/list_restaurants/restaurants_options.dart';
 
 class ListSucursalesUsers extends StatefulWidget {
   static const String routeName = 'ListSucursalesUsers';
@@ -9,6 +10,8 @@ class ListSucursalesUsers extends StatefulWidget {
 }
 
 class _ListSucursalesUsers extends State<ListSucursalesUsers> {
+  static final _prefs = PreferenciasUsuario();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +25,10 @@ class _ListSucursalesUsers extends State<ListSucursalesUsers> {
   }
 
   Widget listaSucursales(BuildContext context) {
-    String especialidad = ModalRoute.of(context).settings.arguments;
-    // Las sugerencias que aparecen cuando la persona escribe
     return FutureBuilder(
-      future: SearchPuestos.buscar(pESPECIALIDAD: especialidad),
+      future: GetUserStandsService.buscar(pEMAIL: _prefs.email),
       builder: (BuildContext context, AsyncSnapshot<List<Puesto>> snapshot) {
-        print(snapshot.data);
+        //print(snapshot.data);
         if (snapshot.hasData) {
           return ListView(
             children: _listaItems(snapshot.data, context),
@@ -48,9 +49,8 @@ class _ListSucursalesUsers extends State<ListSucursalesUsers> {
         title: Text(opt.tpFranquicia.nombreFranquicia),
         leading: Icon(Icons.store),
         subtitle: Text(opt.tpFranquicia.especialidad),
-        onTap: () {
-          Navigator.pushNamed(context, DetailStand.routeName, arguments: opt);
-        },
+        onTap: () => Navigator.pushNamed(context, StandOptions.routeName,
+            arguments: opt),
       );
 
       opciones..add(widgetTemp)..add(Divider());

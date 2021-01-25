@@ -22,10 +22,10 @@ WHERE lower(F.especialidad) LIKE @pESPECIALIDAD''', substitutionValues: {
       "pESPECIALIDAD": '%' + pESPECIALIDAD.toLowerCase() + '%'
     });
 
-    print(result);
+    //print(result);
 
     final puestos = Puestos.fromJsonList(result);
-    print(puestos.items[0].tpFranquicia.nombreFranquicia);
+    //print(puestos.items[0].tpFranquicia.nombreFranquicia);
 
     return puestos.items;
   }

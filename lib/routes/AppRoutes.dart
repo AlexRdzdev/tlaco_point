@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tlaco_point/src/pages/detail_Stand/addMenuStand.dart';
 import 'package:tlaco_point/src/pages/list_restaurants/list_restaurantsUsers.dart';
 import 'package:tlaco_point/src/pages/list_restaurants/list_sucursales.dart';
 import 'package:tlaco_point/src/pages/detail_Stand/Detail_Stand.dart';
+import 'package:tlaco_point/src/pages/list_restaurants/restaurants_options.dart';
 import 'package:tlaco_point/src/pages/loading.dart';
 import 'package:tlaco_point/src/pages/log_in/login.dart';
 import 'package:tlaco_point/src/pages/log_in/signup.dart';
@@ -19,5 +21,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     DetailStand.routeName: (BuildContext context) => DetailStand(),
     ListSucursalesUsers.routeName: (BuildContext context) =>
         ListSucursalesUsers(),
+    StandOptions.routeName: (BuildContext context) => StandOptions(),
+    AddMenuStand.routeName: (BuildContext context) => AddMenuStand(),
   };
 }
