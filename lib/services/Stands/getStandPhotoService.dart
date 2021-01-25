@@ -20,7 +20,8 @@ class GetStandPhoto {
       "pIDSUCURSAL": idSucursal,
     });
 
-    print(result);
+    //print(result);
+    if (result.isEmpty) return null;
 
     final PostgreSQLResultRow row1 = result.first;
     //print(result[0][0]);

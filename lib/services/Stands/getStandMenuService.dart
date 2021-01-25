@@ -20,6 +20,8 @@ class GetStandMenu {
       "pIDSUCURSAL": idSucursal,
     });
 
+    if (result.isEmpty) return null;
+
     final PostgreSQLResultRow row1 = result.first;
     //print(result[0][0]);
     Uint8List bytes = row1.first;

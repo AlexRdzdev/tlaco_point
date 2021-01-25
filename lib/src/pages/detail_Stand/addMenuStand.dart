@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tlaco_point/models/puesto.dart';
 import 'package:tlaco_point/services/Stands/getStandMenuService.dart';
 import 'package:tlaco_point/services/Stands/setStandMenu.dart';
+import 'package:tlaco_point/utils/utils.dart';
 
 class AddMenuStand extends StatefulWidget {
   final Puesto puesto;
@@ -38,7 +39,8 @@ class _AddMenuStandState extends State<AddMenuStand> {
             ),
             SizedBox(height: 30),
             ElevatedButton.icon(
-                onPressed: () => _cargar(widget.puesto, bytes),
+                onPressed:
+                    bytes != null ? () => _cargar(widget.puesto, bytes) : null,
                 icon: Icon(Icons.file_upload),
                 label: Text('Cargar foto'))
           ],
@@ -62,6 +64,26 @@ class _AddMenuStandState extends State<AddMenuStand> {
         idSucursal: puesto.tpSucursal.idSucursal,
         bytes: bytes);
     print(respuesta);
+
+    if (respuesta == "Foto cargada exitosamente") {
+      await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("EXITO"),
+              content: Text(respuesta),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            );
+          });
+      Navigator.pop(context);
+    } else {
+      mostrarDialog(context: context, title: 'ERROR', content: respuesta);
+    }
   }
 
   void _obtenerImagenCargada(Puesto puesto) async {
