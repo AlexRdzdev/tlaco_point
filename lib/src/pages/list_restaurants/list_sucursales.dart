@@ -27,7 +27,7 @@ class _ListSucursales extends State<ListSucursales> {
     return FutureBuilder(
       future: SearchPuestos.buscar(pESPECIALIDAD: especialidad),
       builder: (BuildContext context, AsyncSnapshot<List<Puesto>> snapshot) {
-        print(snapshot.data);
+        //print(snapshot.data);
         if (snapshot.hasData) {
           return ListView(
             children: _listaItems(snapshot.data, context),
