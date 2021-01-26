@@ -2,8 +2,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tlaco_point/models/puesto.dart';
-import 'package:tlaco_point/services/Stands/getStandMenuService.dart';
-import 'package:tlaco_point/services/Stands/setStandMenu.dart';
+import 'package:tlaco_point/services/Stands/menu/getStandMenuService.dart';
+import 'package:tlaco_point/services/Stands/menu/setStandMenu.dart';
 import 'package:tlaco_point/utils/utils.dart';
 
 class AddMenuStand extends StatefulWidget {
@@ -63,7 +63,7 @@ class _AddMenuStandState extends State<AddMenuStand> {
         idFranquicia: puesto.tpFranquicia.idFranquicia,
         idSucursal: puesto.tpSucursal.idSucursal,
         bytes: bytes);
-    print(respuesta);
+    //print(respuesta);
 
     if (respuesta == "Foto cargada exitosamente") {
       await showDialog(
